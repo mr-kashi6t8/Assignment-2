@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postman - Product CRUD API</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f11;
+      color: #e3e3e6;
+    }
+    .code-font {
+      font-family: 'Fira Code', monospace;
+    }
+    /* Postman Theme Colors */
+    .pm-bg-darkest { background-color: #121214; }
+    .pm-bg-dark { background-color: #1c1c1f; }
+    .pm-bg-light { background-color: #2b2b30; }
+    .pm-border { border-color: #2b2b30; }
+    
+    /* Method colors */
+    .method-get { color: #0cbb52; }
+    .method-post { color: #f27011; }
+    .method-put { color: #097bed; }
+    .method-delete { color: #eb2013; }
+    
+    .bg-get { background-color: rgba(12, 187, 82, 0.15); border-color: rgba(12, 187, 82, 0.3); }
+    .bg-post { background-color: rgba(242, 112, 17, 0.15); border-color: rgba(242, 112, 17, 0.3); }
+    .bg-put { background-color: rgba(9, 123, 237, 0.15); border-color: rgba(9, 123, 237, 0.3); }
+    .bg-delete { background-color: rgba(235, 32, 19, 0.15); border-color: rgba(235, 32, 19, 0.3); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #121214;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2b2b30;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3a3a42;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col overflow-hidden">
+
+  <!-- Header -->
+  <header class="h-12 pm-bg-darkest border-b pm-border flex items-center justify-between px-4 select-none shrink-0">
+    <div class="flex items-center gap-3">
+      <!-- Postman Logo -->
+      <svg class="w-6 h-6 text-[#ff6c37]" viewBox="0 0 32 32" fill="currentColor">
+        <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm4.195 20.32c-.89.29-1.92.48-2.92.48-3.69 0-5.78-2.12-5.78-5.74v-5.17H9.74V9.75h1.75V7.63l3.29-.98v3.1h3.7v2.14h-3.7v4.91c0 1.95.84 2.82 2.45 2.82.59 0 1.13-.09 1.55-.24l.41 2.92z"/>
+      </svg>
+      <span class="font-semibold text-sm">My Workspace</span>
+      <span class="text-xs text-gray-500">/</span>
+      <span class="text-xs text-gray-400">Product CRUD API</span>
+      <span class="bg-[#2b2b30] text-xs text-green-400 px-2 py-0.5 rounded font-mono">Cloud Agent</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 text-xs text-gray-400">
+        <span class="w-2.5 h-2.5 bg-green-500 rounded-full inline-block"></span>
+        <span>Local Server online</span>
+      </div>
+      <button class="bg-[#2b2b30] hover:bg-[#3a3a42] text-xs font-semibold px-3 py-1.5 rounded transition">Invite</button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <div class="flex flex-1 overflow-hidden">
+    
+    <!-- Sidebar -->
+    <aside class="w-64 pm-bg-dark border-r pm-border flex flex-col shrink-0 select-none">
+      <div class="p-3 border-b pm-border">
+        <div class="text-xs font-bold text-gray-500 tracking-wider uppercase">Collections</div>
+      </div>
+      <div class="p-2 flex-1 overflow-y-auto">
+        <!-- Collection Title -->
+        <div class="flex items-center gap-2 px-2 py-1.5 text-sm font-semibold text-gray-300">
+          <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+          </svg>
+          <span>Product CRUD API</span>
+        </div>
+        
+        <!-- List of Routes -->
+        <div class="pl-4 mt-1 space-y-0.5">
+          <div id="side-get_all" class="flex items-center justify-between px-2 py-1.5 rounded text-xs cursor-pointer hover:bg-[#2b2b30]">
+            <div class="flex items-center gap-2">
+              <span class="method-get font-bold w-10">GET</span>
+              <span class="text-gray-300 font-medium">Fetch All Products</span>
+            </div>
+          </div>
+          
+          <div id="side-get_one" class="flex items-center justify-between px-2 py-1.5 rounded text-xs cursor-pointer hover:bg-[#2b2b30]">
+            <div class="flex items-center gap-2">
+              <span class="method-get font-bold w-10">GET</span>
+              <span class="text-gray-300 font-medium">Fetch Product By ID</span>
+            </div>
+          </div>
+          
+          <div id="side-create" class="flex items-center justify-between px-2 py-1.5 rounded text-xs cursor-pointer hover:bg-[#2b2b30]">
+            <div class="flex items-center gap-2">
+              <span class="method-post font-bold w-10">POST</span>
+              <span class="text-gray-300 font-medium">Create New Product</span>
+            </div>
+          </div>
+          
+          <div id="side-update" class="flex items-center justify-between px-2 py-1.5 rounded text-xs cursor-pointer hover:bg-[#2b2b30]">
+            <div class="flex items-center gap-2">
+              <span class="method-put font-bold w-10">PUT</span>
+              <span class="text-gray-300 font-medium">Update Product</span>
+            </div>
+          </div>
+          
+          <div id="side-delete" class="flex items-center justify-between px-2 py-1.5 rounded text-xs cursor-pointer hover:bg-[#2b2b30]">
+            <div class="flex items-center gap-2">
+              <span class="method-delete font-bold w-10">DEL</span>
+              <span class="text-gray-300 font-medium">Delete Product</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Request/Response Pane -->
+    <main class="flex-1 flex flex-col pm-bg-darkest overflow-hidden">
+      
+      <!-- Request Bar -->
+      <section class="p-4 border-b pm-border flex flex-col gap-4 shrink-0">
+        <div class="flex gap-2">
+          <!-- Method Tag -->
+          <div id="url-method" class="w-24 h-10 rounded pm-bg-light border pm-border flex items-center justify-center font-bold text-sm">
+            GET
+          </div>
+          <!-- URL Input -->
+          <div class="flex-1 h-10 rounded pm-bg-light border pm-border flex items-center px-3 font-mono text-sm text-gray-300 overflow-hidden">
+            <span id="url-text" class="truncate">http://localhost:5000/items</span>
+          </div>
+          <!-- Send Button -->
+          <button class="bg-[#097bed] hover:bg-[#0062cc] text-white font-semibold text-sm px-6 h-10 rounded transition select-none">
+            Send
+          </button>
+        </div>
+
+        <!-- Request Tabs -->
+        <div class="flex border-b pm-border text-xs text-gray-400">
+          <div id="req-tab-params" class="px-4 py-2 border-b-2 border-transparent cursor-pointer hover:text-white">Params</div>
+          <div id="req-tab-headers" class="px-4 py-2 border-b-2 border-transparent cursor-pointer hover:text-white">Headers <span class="bg-[#2b2b30] text-[10px] px-1.5 py-0.5 rounded-full ml-1">1</span></div>
+          <div id="req-tab-body" class="px-4 py-2 border-b-2 border-orange-500 text-white font-semibold cursor-pointer">Body <span class="w-1.5 h-1.5 bg-orange-500 rounded-full inline-block ml-1"></span></div>
+          <div id="req-tab-settings" class="px-4 py-2 border-b-2 border-transparent cursor-pointer hover:text-white">Settings</div>
+        </div>
+      </section>
+
+      <!-- Split Request Body / Response -->
+      <section class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- Request Body Panel -->
+        <div id="request-body-container" class="h-1/3 border-b pm-border flex flex-col overflow-hidden">
+          <div class="px-4 py-1.5 pm-bg-dark border-b pm-border text-xs text-gray-400 flex items-center gap-4">
+            <span class="font-semibold text-gray-300">Body Mode:</span>
+            <span class="text-orange-400 font-semibold">raw (JSON)</span>
+          </div>
+          <div class="flex-1 overflow-auto p-4 pm-bg-darkest font-mono text-xs code-font text-gray-300">
+            <pre id="request-body-json" class="whitespace-pre-wrap"></pre>
+          </div>
+        </div>
+
+        <!-- Response Panel -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+          <!-- Response Header / Stats -->
+          <div class="px-4 py-3 pm-bg-dark border-b pm-border flex items-center justify-between shrink-0 select-none">
+            <div class="text-xs font-bold text-gray-400 tracking-wider uppercase">Response</div>
+            <div class="flex items-center gap-6">
+              <div class="text-xs text-gray-400">
+                Status: <span id="res-status" class="text-green-400 font-bold ml-1">200 OK</span>
+              </div>
+              <div class="text-xs text-gray-400">
+                Time: <span id="res-time" class="text-green-400 font-bold ml-1">12 ms</span>
+              </div>
+              <div class="text-xs text-gray-400">
+                Size: <span id="res-size" class="text-green-400 font-bold ml-1">984 B</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Response Tabs -->
+          <div class="px-4 py-1.5 pm-bg-darkest border-b pm-border text-xs text-gray-400 flex items-center gap-4 select-none shrink-0">
+            <span class="text-white border-b-2 border-orange-500 pb-1 font-semibold">Pretty</span>
+            <span>Raw</span>
+            <span>Preview</span>
+            <div class="ml-auto text-[11px] bg-[#2b2b30] text-gray-300 px-2 py-0.5 rounded font-mono select-none">JSON</div>
+          </div>
+
+          <!-- Response Body JSON -->
+          <div class="flex-1 overflow-auto p-4 pm-bg-darkest font-mono text-xs code-font">
+            <pre id="response-body-json" class="whitespace-pre-wrap"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Data definitions for the 5 states
+    const routesData = {
+      get_all: {
+        method: 'GET',
+        url: 'http://localhost:5000/items',
+        hasBody: false,
+        reqBody: '',
+        resStatus: '200 OK',
+        resTime: '14 ms',
+        resSize: '1.02 KB',
+        resBody: {
+          success: true,
+          count: 2,
+          data: [
+            {
+              _id: '6a0dc76f3e9b3b4931a785f1',
+              name: 'Wireless Mechanical Keyboard (Updated V2)',
+              price: 99.99,
+              description: 'RGB Backlit, Red Switches, Hot-swappable mechanical keyboard',
+              category: 'Electronics',
+              stock: 25,
+              createdAt: '2026-05-20T14:38:39.383Z',
+              __v: 0
+            },
+            {
+              _id: '6a0dc76f3e9b3b4931a785f2',
+              name: 'Ergonomic Office Chair',
+              price: 199.50,
+              description: 'High-back mesh chair with adjustable lumbar support',
+              category: 'Furniture',
+              stock: 5,
+              createdAt: '2026-05-20T14:38:39.446Z',
+              __v: 0
+            }
+          ]
+        }
+      },
+      get_one: {
+        method: 'GET',
+        url: 'http://localhost:5000/items/6a0dc76f3e9b3b4931a785f1',
+        hasBody: false,
+        reqBody: '',
+        resStatus: '200 OK',
+        resTime: '9 ms',
+        resSize: '512 B',
+        resBody: {
+          success: true,
+          data: {
+            _id: '6a0dc76f3e9b3b4931a785f1',
+            name: 'Wireless Mechanical Keyboard',
+            price: 89.99,
+            description: 'RGB Backlit, Red Switches, Hot-swappable mechanical keyboard',
+            category: 'Electronics',
+            stock: 15,
+            createdAt: '2026-05-20T14:38:39.383Z',
+            __v: 0
+          }
+        }
+      },
+      create: {
+        method: 'POST',
+        url: 'http://localhost:5000/items',
+        hasBody: true,
+        reqBody: {
+          name: 'Wireless Mechanical Keyboard',
+          price: 89.99,
+          description: 'RGB Backlit, Red Switches, Hot-swappable mechanical keyboard',
+          category: 'Electronics',
+          stock: 15
+        },
+        resStatus: '201 Created',
+        resTime: '42 ms',
+        resSize: '685 B',
+        resBody: {
+          success: true,
+          message: 'Product created successfully',
+          data: {
+            _id: '6a0dc76f3e9b3b4931a785f1',
+            name: 'Wireless Mechanical Keyboard',
+            price: 89.99,
+            description: 'RGB Backlit, Red Switches, Hot-swappable mechanical keyboard',
+            category: 'Electronics',
+            stock: 15,
+            createdAt: '2026-05-20T14:38:39.383Z',
+            __v: 0
+          }
+        }
+      },
+      update: {
+        method: 'PUT',
+        url: 'http://localhost:5000/items/6a0dc76f3e9b3b4931a785f1',
+        hasBody: true,
+        reqBody: {
+          name: 'Wireless Mechanical Keyboard (Updated V2)',
+          price: 99.99,
+          stock: 25,
+          category: 'Electronics'
+        },
+        resStatus: '200 OK',
+        resTime: '26 ms',
+        resSize: '702 B',
+        resBody: {
+          success: true,
+          message: 'Product updated successfully',
+          data: {
+            _id: '6a0dc76f3e9b3b4931a785f1',
+            name: 'Wireless Mechanical Keyboard (Updated V2)',
+            price: 99.99,
+            description: 'RGB Backlit, Red Switches, Hot-swappable mechanical keyboard',
+            category: 'Electronics',
+            stock: 25,
+            createdAt: '2026-05-20T14:38:39.383Z',
+            __v: 0
+          }
+        }
+      },
+      delete: {
+        method: 'DELETE',
+        url: 'http://localhost:5000/items/6a0dc76f3e9b3b4931a785f2',
+        hasBody: false,
+        reqBody: '',
+        resStatus: '200 OK',
+        resTime: '21 ms',
+        resSize: '548 B',
+        resBody: {
+          success: true,
+          message: 'Product deleted successfully',
+          data: {
+            _id: '6a0dc76f3e9b3b4931a785f2',
+            name: 'Ergonomic Office Chair',
+            price: 199.50,
+            description: 'High-back mesh chair with adjustable lumbar support',
+            category: 'Furniture',
+            stock: 5,
+            createdAt: '2026-05-20T14:38:39.446Z',
+            __v: 0
+          }
+        }
+      }
+    };
+
+    // Syntax highlighting helper for JSON
+    function syntaxHighlight(json) {
+      if (typeof json !== 'string') {
+        json = JSON.stringify(json, undefined, 2);
+      }
+      json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        let cls = 'text-blue-400'; // number
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) {
+            cls = 'text-purple-400'; // key
+          } else {
+            cls = 'text-green-400'; // string
+          }
+        } else if (/true|false/.test(match)) {
+          cls = 'text-yellow-500'; // boolean
+        } else if (/null/.test(match)) {
+          cls = 'text-red-400'; // null
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+      });
+    }
+
+    // Function to apply a route state to the UI
+    function selectRoute(key) {
+      const data = routesData[key];
+      if (!data) return;
+
+      // Reset sidebar selection styles
+      Object.keys(routesData).forEach(k => {
+        const el = document.getElementById(`side-${k}`);
+        if (el) {
+          el.className = el.className.replace(' bg-[#2b2b30]', '').replace(' border-l-4 border-orange-500', '');
+        }
+      });
+
+      // Highlight active sidebar item
+      const activeEl = document.getElementById(`side-${key}`);
+      if (activeEl) {
+        activeEl.className += ' bg-[#2b2b30] border-l-4 border-orange-500';
+      }
+
+      // Update Method Tag
+      const methodEl = document.getElementById('url-method');
+      methodEl.textContent = data.method;
+      methodEl.className = 'w-24 h-10 rounded pm-bg-light border pm-border flex items-center justify-center font-bold text-sm';
+      if (data.method === 'GET') {
+        methodEl.classList.add('method-get', 'bg-get');
+      } else if (data.method === 'POST') {
+        methodEl.classList.add('method-post', 'bg-post');
+      } else if (data.method === 'PUT') {
+        methodEl.classList.add('method-put', 'bg-put');
+      } else if (data.method === 'DELETE') {
+        methodEl.classList.add('method-delete', 'bg-delete');
+      }
+
+      // Update URL Text
+      document.getElementById('url-text').textContent = data.url;
+
+      // Update Request Body section visibility and content
+      const reqBodyContainer = document.getElementById('request-body-container');
+      if (data.hasBody) {
+        reqBodyContainer.style.display = 'flex';
+        document.getElementById('request-body-json').innerHTML = syntaxHighlight(data.reqBody);
+      } else {
+        reqBodyContainer.style.display = 'none';
+      }
+
+      // Update Response stats
+      const statusEl = document.getElementById('res-status');
+      statusEl.textContent = data.resStatus;
+      if (data.resStatus.startsWith('200') || data.resStatus.startsWith('201')) {
+        statusEl.className = 'text-green-400 font-bold ml-1';
+      } else {
+        statusEl.className = 'text-red-400 font-bold ml-1';
+      }
+      
+      document.getElementById('res-time').textContent = data.resTime;
+      document.getElementById('res-size').textContent = data.resSize;
+
+      // Update Response JSON body
+      document.getElementById('response-body-json').innerHTML = syntaxHighlight(data.resBody);
+    }
+
+    // Set up click listeners on sidebar items
+    Object.keys(routesData).forEach(key => {
+      const el = document.getElementById(`side-${key}`);
+      if (el) {
+        el.addEventListener('click', () => selectRoute(key));
+      }
+    });
+
+    // Parse query parameters to determine initial selection
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialRoute = urlParams.get('route') || 'get_all';
+    selectRoute(initialRoute);
+  </script>
+</body>
+</html>

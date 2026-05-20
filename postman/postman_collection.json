@@ -1,0 +1,160 @@
+{
+  "info": {
+    "_postman_id": "7bf31754-04d3-4cf1-8a9d-5a8b25916ee3",
+    "name": "Product CRUD API",
+    "description": "Postman Collection for testing Standalone Express + MongoDB CRUD operations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Product A",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Wireless Mechanical Keyboard\",\n  \"price\": 89.99,\n  \"description\": \"RGB Backlit, Red Switches, Hot-swappable mechanical keyboard\",\n  \"category\": \"Electronics\",\n  \"stock\": 15\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/items",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "items"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Product B",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ergonomic Office Chair\",\n  \"price\": 199.50,\n  \"description\": \"High-back mesh chair with adjustable lumbar support\",\n  \"category\": \"Furniture\",\n  \"stock\": 5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/items",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "items"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/items",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "items"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Product By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/items/{{PRODUCT_ID}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "items",
+            "{{PRODUCT_ID}}"
+          ]
+        },
+        "description": "Replace {{PRODUCT_ID}} with a valid database product ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Update Product",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Wireless Mechanical Keyboard (Updated V2)\",\n  \"price\": 99.99,\n  \"description\": \"RGB Backlit, Red Switches, Hot-swappable mechanical keyboard\",\n  \"category\": \"Electronics\",\n  \"stock\": 25\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/items/{{PRODUCT_ID}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "items",
+            "{{PRODUCT_ID}}"
+          ]
+        },
+        "description": "Replace {{PRODUCT_ID}} with the ID of the product you want to update."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Product",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/items/{{PRODUCT_ID}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "items",
+            "{{PRODUCT_ID}}"
+          ]
+        },
+        "description": "Replace {{PRODUCT_ID}} with the ID of the product you want to delete."
+      },
+      "response": []
+    }
+  ]
+}
