@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
-  productType: {
+const orderSchema = new mongoose.Schema({
+  customerName: {
     type: String,
     required: true
-  },
-  animalId: {
+  }, // References Customer by name
+  product: {
     type: String,
     required: true
   }, // References Animal by tagNumber / _id
@@ -13,20 +13,13 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  availability: {
+  status: {
     type: String,
-    required: true
-  },
-  media: {
-    type: {
-    images: [String],
-    videos: [String]
-  },
     required: true
   },
 }, { 
   timestamps: true,
-  collection: 'products'
+  collection: 'orders'
 });
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Order', orderSchema);

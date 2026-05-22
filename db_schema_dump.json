@@ -1,0 +1,1244 @@
+{
+  "databaseName": "agriprime_db",
+  "collections": {
+    "purchase_orders": {
+      "sample": {
+        "_id": "699dec53776bfa0c340b366a",
+        "supplier": "Agri Suppliers Ltd",
+        "item": "Silage Feed",
+        "quantity": 500,
+        "status": "Received",
+        "date": "2025-02-10"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "supplier": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "item": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "quantity": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "date": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "quarantine_logs": {
+      "sample": {
+        "_id": "699dec64776bfa0c340b366d",
+        "animalTag": "COW-101",
+        "reason": "Foot Infection",
+        "startDate": "2025-02-11",
+        "status": "Under Observation"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "animalTag": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "reason": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "startDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "milk_production": {
+      "sample": {
+        "_id": "699dec1c776bfa0c340b3661",
+        "animalTag": "COW-101",
+        "morningMilk": 12,
+        "eveningMilk": 10,
+        "fatPercentage": 4.2,
+        "date": "2025-02-20"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "animalTag": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "morningMilk": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "eveningMilk": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "fatPercentage": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "date": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "tasks": {
+      "sample": {
+        "_id": "699deae3776bfa0c340b363d",
+        "taskName": "Morning Milking",
+        "assignedTo": "Usman",
+        "barn": "Barn A",
+        "status": "Completed"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "taskName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "assignedTo": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "barn": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "delivery_tracking": {
+      "sample": {
+        "_id": "699deca4776bfa0c340b3677",
+        "orderId": "ORD-001",
+        "vehicle": "LEA-1234",
+        "driver": "Usman",
+        "currentLocation": "Okara",
+        "status": "In Transit"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "orderId": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "vehicle": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "driver": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "currentLocation": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "suppliers": {
+      "sample": {
+        "_id": "699dec3f776bfa0c340b3667",
+        "supplierName": "Agri Suppliers Ltd",
+        "category": "Feed",
+        "contact": "03001234567",
+        "city": "Lahore"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "supplierName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "category": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "contact": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "city": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "inventory": {
+      "sample": {
+        "_id": "699deb06776bfa0c340b3643",
+        "itemName": "Silage Feed",
+        "category": "Feed",
+        "quantity": 1200,
+        "unit": "kg"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "itemName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "category": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "quantity": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "unit": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 3
+    },
+    "production_logs": {
+      "sample": {
+        "_id": "65b2a6...",
+        "animalId": "65b2a7...",
+        "type": "Milk",
+        "records": {
+          "morningYield": 12.5,
+          "eveningYield": 10.2,
+          "fatPercentage": 4.3,
+          "proteinPercentage": 3.5
+        },
+        "recordedDate": "2025-02-10"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "animalId": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "type": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "records": {
+          "types": [
+            "object"
+          ],
+          "required": true
+        },
+        "recordedDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "customers": {
+      "sample": {
+        "_id": "699deb25776bfa0c340b364a",
+        "name": "Ahmed Khan",
+        "city": "Lahore",
+        "phone": "03120000000"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "name": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "city": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "phone": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "animals": {
+      "sample": {
+        "_id": "699dea3f776bfa0c340b3620",
+        "tagNumber": "COW-101",
+        "species": "Cow",
+        "breed": "Sahiwal",
+        "gender": "Female",
+        "dateOfBirth": "2022-03-12",
+        "currentStatus": "Lactating",
+        "location": "Barn A",
+        "weightHistory": [
+          {
+            "date": "2024-01-01",
+            "weight": 310
+          },
+          {
+            "date": "2024-02-01",
+            "weight": 330
+          }
+        ]
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "tagNumber": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "species": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "breed": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "gender": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "dateOfBirth": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "currentStatus": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "location": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "weightHistory": {
+          "types": [
+            "Array"
+          ],
+          "required": false
+        }
+      },
+      "count": 3
+    },
+    "reports": {
+      "sample": {
+        "_id": "65b2f30...",
+        "reportType": "MilkProductionMonthly",
+        "generatedDate": "2025-02-01",
+        "data": {
+          "totalMilk": 5200,
+          "averagePerCow": 14.2
+        }
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "reportType": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "generatedDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "data": {
+          "types": [
+            "object"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "medical_records": {
+      "sample": {
+        "_id": "699dea8c776bfa0c340b362c",
+        "animalTag": "COW-101",
+        "diagnosis": "Foot Infection",
+        "medicine": "Antibiotic-X",
+        "dosage": "10ml",
+        "vetName": "Dr Ahmad",
+        "quarantine": true
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "animalTag": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "diagnosis": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "medicine": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "dosage": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "vetName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "quarantine": {
+          "types": [
+            "boolean"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "vaccination": {
+      "sample": {
+        "_id": "699deaac776bfa0c340b3631",
+        "animalTag": "COW-101",
+        "vaccine": "FMD",
+        "dueDate": "2025-03-01",
+        "status": "Pending"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "animalTag": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "vaccine": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "dueDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "payments": {
+      "sample": {
+        "_id": "699dec7d776bfa0c340b3670",
+        "customer": "Ahmed Khan",
+        "orderId": "ORD-001",
+        "method": "Bank Transfer",
+        "amount": 50000,
+        "status": "Deposit Paid"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "customer": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "orderId": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "method": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "amount": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "payroll": {
+      "sample": {
+        "_id": "699decf1776bfa0c340b3680",
+        "employeeName": "Usman",
+        "month": "February",
+        "baseSalary": 30000,
+        "overtime": 2000,
+        "finalSalary": 32000,
+        "advance": 5000
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "employeeName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "month": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "baseSalary": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "overtime": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "finalSalary": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "advance": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "product_reviews": {
+      "sample": {
+        "_id": "699dec95776bfa0c340b3674",
+        "customer": "Ahmed Khan",
+        "product": "COW-101",
+        "rating": 5,
+        "comment": "Healthy animal and smooth delivery"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "customer": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "product": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "rating": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "comment": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "wool_production": {
+      "sample": {
+        "_id": "699dec2d776bfa0c340b3664",
+        "animalTag": "SHEEP-301",
+        "woolWeightKg": 3.5,
+        "qualityGrade": "A",
+        "shearingDate": "2025-02-01"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "animalTag": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "woolWeightKg": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "qualityGrade": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "shearingDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "products": {
+      "sample": {
+        "_id": "65b2f10...",
+        "productType": "LiveAnimal",
+        "animalId": "65b2f11...",
+        "price": 250000,
+        "availability": "Available",
+        "media": {
+          "images": [
+            "link"
+          ],
+          "videos": [
+            "link"
+          ]
+        }
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "productType": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "animalId": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "price": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "availability": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "media": {
+          "types": [
+            "object"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "orders": {
+      "sample": {
+        "_id": "699deb39776bfa0c340b364f",
+        "customerName": "Ahmed Khan",
+        "product": "COW-101",
+        "price": 250000,
+        "status": "Confirmed"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "customerName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "product": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "price": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "attendance": {
+      "sample": {
+        "_id": "699decd2776bfa0c340b367d",
+        "employeeName": "Usman",
+        "date": "2025-02-20",
+        "status": "Present"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "employeeName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "date": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "vehicle": {
+      "sample": {
+        "_id": "699deb55776bfa0c340b3654",
+        "vehicleNumber": "LEA-1234",
+        "type": "Livestock Truck",
+        "driver": "Usman",
+        "status": "Available"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "vehicleNumber": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "type": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "driver": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "breeding_records": {
+      "sample": {
+        "_id": "699dea75776bfa0c340b3627",
+        "animalTag": "COW-101",
+        "method": "Artificial",
+        "inseminationDate": "2025-01-01",
+        "expectedDelivery": "2025-10-01",
+        "status": "Confirmed"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "animalTag": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "method": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "inseminationDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "expectedDelivery": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "transactions": {
+      "sample": {
+        "_id": "699deb6b776bfa0c340b3659",
+        "type": "Expense",
+        "category": "Feed Purchase",
+        "amount": 80000,
+        "date": "2025-02-10"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "type": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "category": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "amount": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        },
+        "date": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 2
+    },
+    "notifications": {
+      "sample": {
+        "_id": "699ded0c776bfa0c340b3683",
+        "type": "Vaccination Reminder",
+        "message": "COW-101 vaccine due tomorrow",
+        "status": "Unread",
+        "createdAt": "2025-02-20"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "type": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "message": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "status": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "createdAt": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "employees": {
+      "sample": {
+        "_id": "699deac2776bfa0c340b3636",
+        "name": "Ali Hamza",
+        "role": "Farm Manager",
+        "department": "Operations",
+        "salary": 60000
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "name": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "role": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "department": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "salary": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        }
+      },
+      "count": 3
+    },
+    "equipment_maintainence": {
+      "sample": {
+        "_id": "699decc2776bfa0c340b367a",
+        "equipment": "Milking Machine",
+        "lastServiceDate": "2025-01-15",
+        "nextServiceDue": "2025-04-15",
+        "technician": "ServiceCo"
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "equipment": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "lastServiceDate": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "nextServiceDue": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "technician": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    },
+    "feed_plan": {
+      "sample": {
+        "_id": "699dec0c776bfa0c340b365e",
+        "planName": "Lactating Cow Diet",
+        "animalType": "Cow",
+        "feedItems": [
+          "Silage",
+          "Grain Mix",
+          "Minerals"
+        ],
+        "dailyQuantityKg": 18
+      },
+      "fields": {
+        "_id": {
+          "types": [
+            "ObjectId"
+          ],
+          "required": true
+        },
+        "planName": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "animalType": {
+          "types": [
+            "string"
+          ],
+          "required": true
+        },
+        "feedItems": {
+          "types": [
+            "Array"
+          ],
+          "required": true
+        },
+        "dailyQuantityKg": {
+          "types": [
+            "number"
+          ],
+          "required": true
+        }
+      },
+      "count": 1
+    }
+  }
+}
